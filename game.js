@@ -12,12 +12,12 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const statusText = document.getElementById("status");
 
-// Звуци
+// Sounds
 const bgMusic = document.getElementById("bgMusic");
 const winSound = document.getElementById("winSound");
 const loseSound = document.getElementById("loseSound");
 
-// Картинки
+// Images
 const playerImg = new Image();
 playerImg.src = "./assets/player.png";
 
@@ -27,7 +27,6 @@ ginaImg.src = "./assets/gina.png";
 const goalImg = new Image();
 goalImg.src = "./assets/goal.png";
 
-// Готовност на изображенията
 let assetsLoaded = 0;
 const totalAssets = 3;
 
@@ -145,6 +144,27 @@ function isPathToGoal(startX, startY, maze) {
   
   return false;
 }
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+canvas.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+canvas.addEventListener("touchend", (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    if (dx > 30) movePlayer("right");
+    else if (dx < -30) movePlayer("left");
+  } else {
+    if (dy > 30) movePlayer("down");
+    else if (dy < -30) movePlayer("up");
+  }
+});
 
 function handleKeyPress(e) {
   if (!gameRunning) return;
@@ -319,3 +339,4 @@ soundBtn.addEventListener("click", () => {
     soundBtn.textContent = "🔊 Turn on sound";
   }
 });
+
