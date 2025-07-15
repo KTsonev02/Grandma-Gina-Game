@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run away from Grandma Gina</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./assets/gina.png" type="image/x-icon">
+</head>
+<body>
+  <h1>🏃 Run away from Grandma Gina!</h1>
+  <div id="status">Go to the final!</div>
+  <canvas id="gameCanvas" width="600" height="600"></canvas>
+  <button id="restartBtn">🔁 Restart</button>
+
+  <!-- GIF display -->
+  <div id="gifContainer" style="display:none;">
+    <img id="resultGif" src="" alt="Резултат">
+  </div>
+
+  <!-- Audio -->
+   <button id="soundBtn">🔊</button>
+  <audio id="bgMusic" loop>
+    <source src="./assets/bg-music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="winSound">
+    <source src="/assets/win-sound.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="loseSound">
+    <source src="./assets/lose-sound.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="game.js"></script>
+  
+<footer>
+  Създадено от <a href="https://github.com/KTsonev02" target="_blank">Kaloyan Tsonev</a>. Всички права запазени.
+</footer>
+
+</body>
+</html>
