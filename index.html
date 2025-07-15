@@ -13,6 +13,18 @@
   <canvas id="gameCanvas" width="600" height="600"></canvas>
   <button id="restartBtn">🔁 Restart</button>
 
+  <div class="arrows">
+    <div></div>
+    <button class="control-btn" onclick="move('ArrowUp')">⬆️</button>
+    <div></div>
+    <button class="control-btn" onclick="move('ArrowLeft')">⬅️</button>
+    <div></div>
+    <button class="control-btn" onclick="move('ArrowRight')">➡️</button>
+    <div></div>
+    <button class="control-btn" onclick="move('ArrowDown')">⬇️</button>
+    <div></div>
+  </div>
+
   <!-- GIF display -->
   <div id="gifContainer" style="display:none;">
     <img id="resultGif" src="" alt="Резултат">

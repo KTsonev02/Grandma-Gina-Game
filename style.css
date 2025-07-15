@@ -84,7 +84,9 @@ footer a {
   font-weight: bold;
   transition: color 0.3s;
 }
-
+.arrows {
+  display: none;
+}
 footer a:hover {
   color: #1c5980;
   text-decoration: underline;
@@ -106,4 +108,17 @@ footer a:hover {
   #resultGif {
     width: 90vw;
   }
+  .arrows {
+      display: grid;
+      grid-template-columns: 60px 60px 60px;
+      grid-template-rows: 60px 60px 60px;
+      gap: 5px;
+      justify-content: center;
+      margin: 30px;
+    }
+    .arrows button {
+      font-size: 20px;
+    }
+
 }
+

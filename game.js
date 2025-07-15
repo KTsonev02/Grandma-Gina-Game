@@ -145,46 +145,30 @@ function isPathToGoal(startX, startY, maze) {
   return false;
 }
 
-let touchStartX = 0;
-let touchStartY = 0;
-
-canvas.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-});
-
-canvas.addEventListener("touchend", (e) => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-
-  if (Math.abs(dx) > Math.abs(dy)) {
-    if (dx > 30) movePlayer("right");
-    else if (dx < -30) movePlayer("left");
-  } else {
-    if (dy > 30) movePlayer("down");
-    else if (dy < -30) movePlayer("up");
-  }
-});
 
 function handleKeyPress(e) {
-  if (!gameRunning) return;
+      move(e.key);
+    }
 
-  let dx = 0, dy = 0;
-  if (e.key === "ArrowUp") dy = -1;
-  else if (e.key === "ArrowDown") dy = 1;
-  else if (e.key === "ArrowLeft") dx = -1;
-  else if (e.key === "ArrowRight") dx = 1;
-  else return; // Игнориране на други клавиши
+    function move(direction) {
+      if (!gameRunning) return;
 
-  const newX = player.x + dx;
-  const newY = player.y + dy;
+      let dx = 0, dy = 0;
+      if (direction === "ArrowUp") dy = -1;
+      else if (direction === "ArrowDown") dy = 1;
+      else if (direction === "ArrowLeft") dx = -1;
+      else if (direction === "ArrowRight") dx = 1;
+      else return;
 
-  if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] === 0) {
-    player.x = newX;
-    player.y = newY;
-    draw();
-  }
-}
+      const newX = player.x + dx;
+      const newY = player.y + dy;
+
+      if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] === 0) {
+        player.x = newX;
+        player.y = newY;
+        draw();
+      }
+    }
 
 function moveGina() {
   const directions = [
